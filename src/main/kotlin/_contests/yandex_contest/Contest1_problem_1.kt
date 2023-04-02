@@ -5,17 +5,19 @@ import java.io.PrintWriter
 import java.util.Scanner
 
 
+const val YES = "Yes"
+const val NO = "Yes"
 fun main() {
     val input = "input.txt"
     val output = "output.txt"
     val scn = Scanner(File(input))
-    val writer = PrintWriter(output)
+    val out = PrintWriter(output)
 
 
     val groups = ArrayList<Short>()
     (1..scn.nextInt()).forEach { _ -> groups.add(scn.nextShort()) }
     reversSort(groups)
-    println("groups -> $groups")
+    println("houses -> $groups")
 
 
     val houses = ArrayList<Short>()
@@ -27,10 +29,10 @@ fun main() {
     println("houses -> $houses")
 
 
-    if (groups.size <= houses.size)
-        writer.print(subtract(groups, houses))
-    else writer.print("No")
-    writer.close()
+    out.use {
+        if (groups.size <= houses.size) it.print(subtract(groups, houses))
+        else it.print(NO)
+    }
 
     val memory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()
     println(memory)
@@ -38,24 +40,25 @@ fun main() {
 }
 
 fun reversSort(list: ArrayList<Short>) {
-    var isSorted = false
-    while (!isSorted) {
-        isSorted = true
+    var sorted = false
+    while (!sorted) {
+        sorted = true
         for (i in (list.lastIndex-1)downTo 0) {
             if (list[i+1] > list[i]) {
                 val temp = list[i]
                 list[i] = list[i+1]
                 list[i+1] = temp
-                isSorted = false
+                sorted = false
             }
         }
     }
 }
+
 fun subtract(groups: ArrayList<Short>, houses: ArrayList<Short>): String {
     (groups.indices).forEachIndexed { index, _ ->
         if (houses[index] - groups[index] < 0)
-            return "No"
+            return NO
     }
-    return "Yes"
+    return YES
 }
 

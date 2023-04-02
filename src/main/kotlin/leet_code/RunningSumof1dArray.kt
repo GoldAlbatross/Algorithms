@@ -1,4 +1,4 @@
-package leet_code.arrays
+package leet_code
 /*
 Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
 Return the running sum of nums.

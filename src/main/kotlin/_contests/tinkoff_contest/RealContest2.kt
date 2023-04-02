@@ -1,4 +1,4 @@
-package trash
+package _contests.tinkoff_contest
 
 import java.util.*
 import kotlin.math.ceil

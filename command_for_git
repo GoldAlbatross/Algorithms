@@ -1,0 +1,22 @@
+
+
+Добавление существующего кода в Git:
+   git init
+   git add .
+   git commit -m "first commit"
+   git remote add origin https://github.com/GoldAlbatross/Kats.git
+   git push -u origin master
+может потребоваться дополнительно
+   git config --global user.email "snovaodin@gmail.com"
+   git commit -m "first commit"
+
+
+
+//===========================================================================
+
+
+
+Работа с ответвлениями в Git:
+   git checkout master
+   git pull origin master
+   git checkout -b sprint12
