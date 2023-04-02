@@ -1,4 +1,4 @@
-package interview.sorts
+package trash.sorts
 
 import kotlin.math.abs
 
