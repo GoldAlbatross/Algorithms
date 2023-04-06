@@ -7,81 +7,98 @@ import java.util.Scanner
 
 
 fun main() {
+    val t = System.currentTimeMillis()
+
     val input = "input.txt"
     val output = "output.txt"
     val scn = Scanner(File(input))
     val out = PrintWriter(output)
 
 
-    val groups = ArrayList<Int>()
-    (1..scn.nextInt()).forEach { _ -> groups.add(scn.nextInt()) }
-    println("groups -> $groups")
+    val capacity = scn.nextInt()
+    val groups = ArrayList<Int>(capacity)
+    repeat(capacity) { groups.add(scn.nextInt()) }
 
 
-    val map = HashMap<Int,Int>()
-    (1..scn.nextInt()).forEach { _ ->
+    val map = HashMap<Int,Int>(capacity)
+    repeat(scn.nextInt()) {
         val key = scn.nextInt()
         if (map[key] == null) map[key] = scn.nextInt()
         else map[key] = scn.nextInt() + map[key]!!
     }
-    println("houses -> $map\n")
+
+    println("start groups -> ${groups}")
+    println("start map -> ${map.size}")
+    println("========================")
 
 
-    val groups2 = ArrayList<Int>()
 
-    groups.forEach {
+    var itr = groups.iterator()
+    while (itr.hasNext()) {
+        val it = itr.next()
         if (map.containsKey(it)) {
-            if (map[it]!! > 0)
-                map[it] = map[it]!! - 1
-            else map.remove(it)!!
+            map[it] = map[it]!! - 1
+            itr.remove()
+            if (map[it] == 0) map.remove(it)
         }
-        else groups2.add(it)
     }
 
-    val h = ArrayList<Int>()
-    map.forEach { (t, u) ->
-        repeat(u) {h.add(t)}
+    println("groups -> ${groups.size}")
+    println("map -> ${map.size}")
+    println("========================")
+    bubbleSort(groups)
+
+
+    var ok = false
+    while (!ok) {
+        ok = true
+        itr = map.keys.iterator()
+        while (itr.hasNext()) {
+            val it = itr.next()
+            if (groups.last() <= it) {
+                map[it] = map[it]!! - 1
+                itr.remove()
+                groups.remove(groups.last())
+                if (map[it] == 0) map.remove(it)
+                ok = false
+            }
+        }
+        if (groups.size == 0) {
+            println("Yes")
+            out.use { it.print("Yes")
+            }
+            ok = true
+        }
+        println("========================")
+        println("groups -> ${groups.size}")
+        println("map -> ${map.size}")
     }
 
-    reversSort1(groups2)
-    reversSort1(h)
-
-    println("groups2 -> $groups2")
-    println("map -> $map")
-    println("h -> $h")
+    println("No")
+    out.use { it.println("No") }
 
 
 
-    out.use {
-        if (groups.size <= h.size) it.print(subtract1(groups2, h))
-        else it.print("No")
-    }
 
+    println(System.currentTimeMillis() - t)
     val memory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()
-    println(memory)
-    // 6,57566   6104664   4662496   4783984
+    println(memory / 1024)
+    // 6,57566   6104664   4662496   4783984   4796008   15805
 }
 
-fun reversSort1(list: ArrayList<Int>) {
+fun bubbleSort(arr: ArrayList<Int>) {
     var sorted = false
     while (!sorted) {
         sorted = true
-        for (i in (list.lastIndex-1)downTo 0) {
-            if (list[i+1] > list[i]) {
-                val temp = list[i]
-                list[i] = list[i+1]
-                list[i+1] = temp
+        for (i in 1..arr.lastIndex) {
+            if (arr[i - 1] > arr[i]) {
+                val temp1 = arr[i]
+                arr[i] = arr[i - 1]
+                arr[i - 1] = temp1
                 sorted = false
             }
         }
     }
 }
 
-fun subtract1(groups: ArrayList<Int>, houses: ArrayList<Int>): String {
-    (groups.indices).forEachIndexed { index, _ ->
-        if (houses[index] - groups[index] < 0)
-            return "No"
-    }
-    return "Yes"
-}
 
