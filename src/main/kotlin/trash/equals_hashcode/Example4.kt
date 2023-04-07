@@ -1,4 +1,4 @@
-package interview.equals_hashcode
+package trash.equals_hashcode
 
 // Вывод: в коллекции set нужно изменить проверку только по id,
 // тогда можно вносить изменения в существующие контакты, не земеняя их.

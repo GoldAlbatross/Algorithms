@@ -1,4 +1,4 @@
-package interview.equals_hashcode
+package trash.equals_hashcode
 
 // Вывод: коллекции в java используют под капотом equals,
 // мы можем менять логику работы коллекций изменяя этот метод.

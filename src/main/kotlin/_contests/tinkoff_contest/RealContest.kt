@@ -1,4 +1,4 @@
-package trash.tinkoff_contest
+package _contests.tinkoff_contest
 
 import java.util.Scanner
 
