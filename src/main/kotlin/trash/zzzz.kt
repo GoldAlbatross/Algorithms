@@ -1,27 +1,39 @@
 package trash
 
+import java.util.LinkedList
+
 fun main() {
-    val arr = intArrayOf(1,8,2,3,4,5)
-    val x = 4
+    val arr = arrayListOf(Pair(2,9), Pair(3,8), Pair(9,4), Pair(4,8))
+    val x = 9
 
+    val ll = LinkedList<Pair<Int,Int>>()
 
-    println(getMaxElements(arr,x).contentToString())
-}
-
-
-fun getMaxElements(arr: IntArray, numbersOfMaxElements: Int): IntArray {
-    val maxElements = IntArray(numbersOfMaxElements)
-    var previousMaxElements = Int.MAX_VALUE
-    for (i in 0 until numbersOfMaxElements) {
-        var currentMax = Int.MIN_VALUE
-        for (j in arr.indices) {
-            if (arr[j] < previousMaxElements)
-                currentMax =
-                    if (currentMax >= arr[j]) currentMax
-                    else arr[j]
+    for (i in 0..arr.lastIndex) {
+        ll.add(arr[i])
+        var current = arr[0].second // set iterator -> 1st item = x
+        for (j in i + 1..arr.lastIndex) {
+            if (x == arr[j].first) {
+                ll.add(arr[j])
+                arr.remove(arr[j])
+                current = arr[j].second
+            }
         }
-        previousMaxElements = currentMax
-        maxElements[i] = currentMax
     }
-    return maxElements
+
+
+
 }
+
+
+// set(9,8,4)
+
+// 9 = (2,9), (3,8) -> set.delete(9)
+
+// 8 = (2,9)->(9,4)->(4,8) | (3,8) | (9,4)->(4,8) | (4,8)
+
+// 4 = (2,9)->(9,4) | (3,8) -> set.delete(4)
+
+
+
+
+

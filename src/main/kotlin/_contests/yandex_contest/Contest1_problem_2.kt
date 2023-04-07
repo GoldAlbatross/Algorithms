@@ -31,9 +31,7 @@ fun main() {
             for (k in citiesMap.keys) {
                 if (it != citiesMap[k]) {
                     var key = citiesMap[k]
-                    while (citiesMap[key] != null && citiesMap[key] != it) {
-                        key = citiesMap[key]!!
-                    }
+                    while (citiesMap[key] != null && citiesMap[key] != it) { key = citiesMap[key]!! }
                     if (citiesMap[key] != it) {
                         itr.remove()
                         break
@@ -43,7 +41,7 @@ fun main() {
             }
         }
     }
-    if (set.size == 1) out.use { it.print("${set.toArray()[0]}") }
+    if (set.size == 1) out.use { it.print("${set.average().toInt()}") }
     else out.use { it.print("-1") }
 
     println(set)
