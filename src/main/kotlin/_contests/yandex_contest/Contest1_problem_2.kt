@@ -21,8 +21,8 @@ fun main() {
     val set = HashSet<Int>()
     set.addAll(citiesMap.values)
 
-    println(citiesMap)
-    println(set)
+//    println(citiesMap)
+//    println(set)
 
     if (set.size > 1) {
         val itr = set.iterator()
@@ -36,13 +36,15 @@ fun main() {
                         itr.remove()
                         break
                     }
-                    println(set)
+//                    println(set)
                 }
             }
         }
+//        println("-> ${itr.next()}")
+//        println("-> ")
     }
     if (set.size == 1) out.use { it.print("${set.average().toInt()}") }
     else out.use { it.print("-1") }
 
-    println(set)
+//    println(set)
 }

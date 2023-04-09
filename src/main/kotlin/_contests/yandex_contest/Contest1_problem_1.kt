@@ -6,38 +6,33 @@ import java.util.Scanner
 
 
 fun main() {
-    val t = System.currentTimeMillis()
 
     val input = "input.txt"
     val output = "output.txt"
     val scn = Scanner(File(input))
     val out = PrintWriter(output)
 
-    val groups = MutableList(scn.nextInt()) {scn.nextInt()}
-    reversSort(groups)
-    println("groups -> ${groups.size}")
+    val groups = MutableList(scn.nextInt()) {scn.nextShort()}
 
-    val houses = ArrayList<Int>()
+    val houses = mutableListOf<Short>()
     (1..scn.nextInt()).forEach { _ ->
-        val item = scn.nextInt()
+        val item = scn.nextShort()
         repeat(scn.nextInt()) { houses.add(item) }
     }
-    reversSort(houses)
-    println("houses -> ${houses.size}")
 
+    combReversSort(groups)
+    combReversSort(houses)
+    println("$groups\n$houses")
 
     out.use {
         if (groups.size <= houses.size) it.print(subtract(groups, houses))
         else it.print("No")
     }
 
-    println(System.currentTimeMillis() - t)
-    val memory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()
-    println(memory / 1024)
 
 }
 
-fun reversSort(list: MutableList<Int>) {
+fun combReversSort(list: MutableList<Short>) {
     var gap = list.lastIndex
 
     var sorted = false
@@ -57,7 +52,7 @@ fun reversSort(list: MutableList<Int>) {
     }
 }
 
-fun subtract(groups: MutableList<Int>, houses: ArrayList<Int>): String {
+fun subtract(groups: MutableList<Short>, houses: MutableList<Short>): String {
     (groups.indices).forEachIndexed { index, _ ->
         if (houses[index] - groups[index] < 0)
             return "No"

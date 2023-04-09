@@ -23,8 +23,8 @@ fun main() {
     val set = HashSet<Int>()
     citiesMap.forEach { set.add(it.second) }
 
-    println(citiesMap)
-    println(set)
+//    println(citiesMap)
+//    println(set)
 
 // [(2, 9), (3, 8), (9, 4), (4, 8)]
 // [4, 8, 9]
@@ -63,7 +63,7 @@ fun main() {
                     }
                     if (!fish) {
                         itr.remove()
-                        println(set)
+//                        println(set)
                         match = false
                         break
                     }
@@ -75,7 +75,7 @@ fun main() {
     if (set.size == 1) out.use { it.print("${set.average().toInt()}") }
     if (set.size == 0) out.use { it.print("-1") }
 
-    println(System.currentTimeMillis() - t)
-    val memory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()
-    println(memory / 1024)
+//    println(System.currentTimeMillis() - t)
+//    val memory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()
+//    println(memory / 1024)
 }
