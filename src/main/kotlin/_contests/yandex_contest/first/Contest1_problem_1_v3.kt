@@ -1,4 +1,4 @@
-package _contests.yandex_contest
+package _contests.yandex_contest.first
 
 
 import java.io.File

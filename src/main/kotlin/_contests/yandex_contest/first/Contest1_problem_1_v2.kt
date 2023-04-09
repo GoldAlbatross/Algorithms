@@ -1,4 +1,4 @@
-package _contests.yandex_contest
+package _contests.yandex_contest.first
 
 
 import java.io.File
@@ -7,7 +7,7 @@ import java.util.Scanner
 
 
 fun main() {
-    //val t = System.currentTimeMillis()
+    val t = System.currentTimeMillis()
 
     val input = "input.txt"
     val output = "output.txt"
@@ -65,9 +65,9 @@ fun main() {
 
 
 
-//    println(System.currentTimeMillis() - t)
-//    val memory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()
-//    println(memory / 1024)
+    println(System.currentTimeMillis() - t)
+    val memory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()
+    println(memory / 1024)
     // 6,57566   6104664   4662496   4783984   4796008   15805
 }
 

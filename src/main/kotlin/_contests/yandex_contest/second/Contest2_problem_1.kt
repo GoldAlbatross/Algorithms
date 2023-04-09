@@ -1,4 +1,4 @@
-package _contests.yandex_contest
+package _contests.yandex_contest.second
 
 import java.io.File
 import java.io.PrintWriter
