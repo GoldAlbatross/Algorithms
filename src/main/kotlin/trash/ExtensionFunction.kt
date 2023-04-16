@@ -1,4 +1,4 @@
-package interview
+package trash
 
 import kotlin.math.abs
 import kotlin.math.log10

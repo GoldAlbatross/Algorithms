@@ -13,8 +13,13 @@ fun main() {
     var min2 = Int.MAX_VALUE
 
     intArray.forEach {
-        if (it < min) { min2 = min; min = it }
-        else if (it < min2 && it != min) { min2 = it }
+        if (it < min) {
+            min2 = min;
+            min = it
+        }
+        else if (it < min2 && it != min) {
+            min2 = it
+        }
     }
 
     if (min2 != Int.MAX_VALUE) println(min2) else println("No such item")

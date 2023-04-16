@@ -4,6 +4,7 @@ fun main() {
     println(isPalindrome(200))
 }
 
+//======================================================================================================================
 private fun isPalindrome(x: Int): Boolean {
 
     return when {
