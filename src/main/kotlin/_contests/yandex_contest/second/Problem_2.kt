@@ -1,62 +1,84 @@
 package _contests.yandex_contest.second
 
+import java.io.BufferedReader
+import java.io.File
+import java.io.PrintWriter
 
-const val START = "APPLICATION_FINISHED_LAUNCHING"
-const val END = "APPLICATION_TERMINATED"
+private const val START = "APPLICATION_FINISHED_LAUNCHING"
+private const val END = "APPLICATION_TERMINATED"
 fun main() {
-    val t = System.currentTimeMillis()
-    val input = "input.txt"
-    val output = "output.txt"
-    val scanner = java.util.Scanner(java.io.File(input))
-    val writer = java.io.PrintWriter(output)
 
-    val n = scanner.nextInt()
-    var allSessions = 0
+    val input = File("input.txt")
+    val buff = BufferedReader(input.reader())
+    val writer = PrintWriter(File("output.txt"))
+
     var nice = 0
     var uid = -1
-    var str = ""
-    var end = ""
-
-
-    while (scanner.hasNext()) {
-        str = scanner.next()
-        if (str.length == 30 && str == START) {
-            allSessions++
-            if (scanner.hasNext()) uid = scanner.nextInt()
-            var flag = true
-            while (scanner.hasNext()) {
-                end = scanner.next()
-                if (end.length == 22 && end == END && flag) {
-                    if (scanner.hasNext() && uid == scanner.nextInt()) {
-                        nice++
-                        break
-                    }
-                } else if (end.length == 30 && end == START) {
-                    allSessions++
-                    flag = false
-                } else if (end.length == 22 && end == END) {
-                    if (scanner.hasNext() && uid == scanner.nextInt())
-                        break
+    var blocked = false
+    var starts = 0
+    val n = buff.readLine().toInt()
+    repeat(n) { when (buff.getBitOfLine()) {
+            START -> {
+                if (uid > 0) {
+                    buff.readLine()
+                    ++starts
+                    blocked = true
+                } else {
+                    uid = buff.readLine().toInt()
+                    ++starts
                 }
             }
+            END -> {
+                if (uid == buff.readLine().toInt()) {
+                    if (!blocked) {
+                        uid = -1
+                        ++nice
+                    } else {
+                        uid = -1
+                        blocked = false
+                    }
+                } else Unit
+            }
+            else -> {
+                buff.readLine()
+                System.gc()
+            }
         }
-
     }
+    buff.close()
 
-    if (nice == 0) println(0)
+    if (nice == 0) writer.use { it.println(0) }
     else {
-        val res = 100.0f * nice / allSessions
-        if  (res == res.toInt().toFloat())
-            println("%.1f".format(res))
-        else
-            println("%.6f".format(res).trimEnd('0'))
+        val res = 100.0f * nice / starts
+        writer.use {
+            if (res == res.toInt().toFloat())
+                it.println("%.1f".format(res))
+            else
+                it.println("%.6f".format(res).trimEnd('0'))
+        }
+    }
+}
+
+private fun BufferedReader.getBitOfLine(): String {
+    val str = StringBuilder("")
+
+    while (-1 != this.read().also { str.append(it.toChar()) }) {
+        if (str[0] != 'A') {
+            str.append(this.readLine())
+            return ""
+        } else if (str.length == 22 && str.toString() == END) {
+            this.readLine()
+            return str.toString()
+        } else if (str.length == 30 && str.toString() == START) {
+            this.readLine()
+            return str.toString()
+        }
     }
 
-
-    println("xxx")
-    println(System.currentTimeMillis() - t)
-    val memory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()
-    println(memory / 1024)
-
-
+    return ""
 }
+
+//        else if (str.length == 30) {
+//            val x = this.readLine()
+//            return ""
+//        }

@@ -1,22 +1,22 @@
 package trash
 
-import _contests.yandex_contest.second.END
-import _contests.yandex_contest.second.START
 import java.io.PrintWriter
 
-
+private const val START = "APPLICATION_FINISHED_LAUNCHING"
+private const val END = "APPLICATION_TERMINATED"
 
 fun main() {
 
 
     val out = PrintWriter("input.txt")
-    out.use {it ->
-        it.println(1000000)
-        repeat(500000) { _ ->
-            it.println(START)
-            it.println((211..212).random())
-            it.println(END)
-            it.println((211..212).random())
+    out.use {
+        it.println(20)
+        repeat(20) { _ ->
+            it.print("${(1..30).random()} ")
+            it.print("${(1..40).random()} ")
+//            it.println("qwertyuiopasdfghjaaa".repeat(100) + "\n111")
+//            it.println("aaaa_bbbb\n111")
+//            it.println("$END\n${(211..212).random()}")
         }
     }
 

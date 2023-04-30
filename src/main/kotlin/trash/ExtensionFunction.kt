@@ -15,13 +15,15 @@ fun main() {
 //======================================================================================== Int =========================
 fun Int.lengthNumber() = when(this) {
     0 -> 1
-    else -> log10(abs(toDouble())).toInt() + 1
+    else -> log10(abs(this.toDouble())).toInt() + 1
 }
 
 
 //======================================================================================== String ======================
-val String.firstWord: String
+var String.firstWord: String
     get() = this.takeWhile { it != ' ' }
+    set(value) {}
+
 
 fun String.getListOfWords():List<String> =
     this.split( " ")

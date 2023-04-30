@@ -1,30 +1,26 @@
 package _contests.yandex_contest.second
 
+import java.io.File
+import java.io.PrintWriter
+import java.util.Scanner
 
 fun main() {
-    val input = "input.txt"
-    val output = "output.txt"
-    val scanner = java.util.Scanner(java.io.File(input))
-    val writer = java.io.PrintWriter(output)
 
+    val scn = Scanner(File("input.txt"))
+    val writer = PrintWriter(File("output.txt"))
 
-    val a = scanner.next().toBigInteger()
-    val b = scanner.next().toBigInteger()
-    val c = scanner.next().toBigInteger()
-
+    val(a,b,c) = scn.nextLine().split(" ").map { it.toBigInteger() }
 
     val result = when {
         (a > b && a < c) -> a
-        (b > a && b < c) -> b
-        (c > a && c < b) -> c
         (a < b && a > c) -> a
+        (b > a && b < c) -> b
         (b < a && b > c) -> b
+        (c > a && c < b) -> c
         (c < a && c > b) -> c
         (a == b || a == c) -> a
-        (b == c) -> b
-        else -> (-1).toBigInteger()
+        else -> b
     }
-
 
     writer.use { it.print(result.toString()) }
 }
