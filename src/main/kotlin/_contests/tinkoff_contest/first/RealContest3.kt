@@ -1,4 +1,4 @@
-package _contests.tinkoff_contest
+package _contests.tinkoff_contest.first
 
 import java.util.Scanner
 fun main() { // aabbccddbadd
