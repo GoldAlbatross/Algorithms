@@ -1,4 +1,4 @@
-package trash
+package trash.extention
 
 import kotlin.math.abs
 import kotlin.math.log10
