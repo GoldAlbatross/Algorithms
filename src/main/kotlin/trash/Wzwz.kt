@@ -1,6 +1,10 @@
 package trash
 
+import java.io.BufferedReader
+import java.io.FileReader
+import java.io.IOException
 import java.io.PrintWriter
+
 
 private const val START = "APPLICATION_FINISHED_LAUNCHING"
 private const val END = "APPLICATION_TERMINATED"
@@ -18,6 +22,15 @@ fun main() {
 //            it.println("aaaa_bbbb\n111")
 //            it.println("$END\n${(211..212).random()}")
         }
+    }
+
+    try {
+        val reader = BufferedReader(FileReader("file.txt"))
+        val line = reader.readLine()
+        println(line)
+        reader.close()
+    } catch (e: IOException) {
+        e.printStackTrace()
     }
 
 
