@@ -3,10 +3,10 @@ package code_wars.level_8kyu
 fun main() {
     //println(getAge("4 years old"))
     println(getAge2("55 years old"))
-    //println(getAge3("6 2 old"))
+    println(getAge3("6 2 old"))
     //println(getAge4("57 years old"))
-    //println(getAge5("888 years old"))
-    //println(getAge6("99*25"))
+    println(getAge5("888 years old"))
+    println(getAge6("99-25"))
 
 }
 
@@ -26,6 +26,6 @@ fun getAge5(yearsOld: String): Int =
     yearsOld.takeWhile { it.isDigit() }.toInt()
 
 fun getAge6(yearsOld: String): String {
-    val x = yearsOld.split("[*/-]")
+    val x = yearsOld.split("[*+-]".toRegex())
     return x[1]
 }
