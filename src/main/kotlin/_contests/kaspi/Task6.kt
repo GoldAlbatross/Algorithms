@@ -15,12 +15,21 @@ fun main(args: Array<String>) {
     println(output)
     reader.close()
 }
-
-
-fun unique(items: List<Int>) : Int {
-    var res = items[0]
+//======================================================================================================================
+fun unique2(items: List<Int>) : Int {
+    var res = 0
     for (i in 1 until items.size) {
         res = res xor items[i]
+        println(res)
     }
     return res
+}
+//======================================================================================================================
+private fun unique(items: List<Int>) : Int {
+    val map = hashMapOf<Int,Int>()
+    for (num in items) {
+        map[num] = 1 + map.getOrDefault(num,0)
+    }
+    val res = map.filter { it.value == 1 }
+    return res.keys.first()
 }

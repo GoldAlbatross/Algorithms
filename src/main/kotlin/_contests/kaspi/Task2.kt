@@ -28,9 +28,8 @@ private fun anagram2(str1: String, str2: String): Boolean {
 
     val map = mutableMapOf<Char, Int>()
 
-    for (char in str1) {
+    for (char in str1)
         map[char] = 1 + map.getOrDefault(char, 0)
-    }
 
     for (char in str2) {
         if (map.containsKey(char)) {
@@ -38,9 +37,7 @@ private fun anagram2(str1: String, str2: String): Boolean {
             if (map[char] == 0) {
                 map.remove(char)
             }
-        } else {
-            return false
-        }
+        } else return false
     }
 
     return map.isEmpty()
