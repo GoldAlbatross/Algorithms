@@ -1,4 +1,4 @@
-package leet_code.arrays
+package leet_code.arrays.linked_list
 
 fun main() {
     val l1 = ListNode(5)
