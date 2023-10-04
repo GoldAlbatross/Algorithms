@@ -1,4 +1,4 @@
-package leet_code.collections
+package leet_code.collections.trees
 
 import java.util.*
 

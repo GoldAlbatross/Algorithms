@@ -1,4 +1,4 @@
-package leet_code.arrays
+package leet_code.collections
 
 fun main() {
     val array = arrayOf("flower","flow","flight")

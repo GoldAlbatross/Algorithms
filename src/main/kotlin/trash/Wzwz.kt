@@ -8,7 +8,6 @@ import java.io.PrintWriter
 
 private const val START = "APPLICATION_FINISHED_LAUNCHING"
 private const val END = "APPLICATION_TERMINATED"
-
 fun main() {
 
 
@@ -24,14 +23,14 @@ fun main() {
         }
     }
 
-    try {
-        val reader = BufferedReader(FileReader("file.txt"))
-        val line = reader.readLine()
-        println(line)
-        reader.close()
-    } catch (e: IOException) {
-        e.printStackTrace()
-    }
+//    try {
+//        val reader = BufferedReader(FileReader("file.txt"))
+//        val line = reader.readLine()
+//        println(line)
+//        reader.close()
+//    } catch (e: IOException) {
+//        e.printStackTrace()
+//    }
 
 
 

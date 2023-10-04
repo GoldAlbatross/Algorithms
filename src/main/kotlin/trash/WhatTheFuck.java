@@ -16,3 +16,5 @@ public class WhatTheFuck {
         return true;
     }
 }
+
+static class Xxx {}

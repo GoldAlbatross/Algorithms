@@ -1,4 +1,4 @@
-package leet_code.arrays.linked_list
+package leet_code.collections.linked_list
 
 
 private fun main() {

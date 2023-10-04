@@ -1,4 +1,4 @@
-package leet_code.arrays.sorted_array
+package leet_code.collections.sorted_array
 
 private fun main() {
     val ar1 = intArrayOf(1,2,3,0,0,0)

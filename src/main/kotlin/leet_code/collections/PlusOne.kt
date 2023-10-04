@@ -1,4 +1,4 @@
-package leet_code.arrays
+package leet_code.collections
 
 private fun main() {
    println(plusOne(
