@@ -11,7 +11,7 @@ ANDROID_UNIQUE
 fun main(args: Array<String>) {
     val reader = BufferedReader(InputStreamReader(System.`in`))
     val input = reader.readLine().split(",").map { it.trim().toInt() }
-    val output = unique(input)
+    val output = unique2(input)
     println(output)
     reader.close()
 }

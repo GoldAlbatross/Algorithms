@@ -1,4 +1,4 @@
-package interview.equals_hashcode
+package trash.equals_hashcode
 
 
 // Вывод: коллекция map не позволит получить значение по измененному ключу так как изменился хешкод,

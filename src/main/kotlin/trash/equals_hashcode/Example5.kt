@@ -1,4 +1,4 @@
-package interview.equals_hashcode
+package trash.equals_hashcode
 
 // Достоинства иммутабельных объектов
 // Поскольку поля никогда не меняются, то и хешкод всегда один и тот же,

@@ -1,8 +1,10 @@
-package interview.equals_hashcode
+package trash.equals_hashcode
+
+import java.io.FileInputStream
 
 //Без переопределения equals()/hashCode() два объекта с совершенно одинаковыми полями не дадут true
 //=============================================================================================================
-class Contact(
+private class Contact(
     val id: Int,
     val name: String,
     val phone: String,
@@ -19,7 +21,6 @@ class Contact(
 
         return true
     }
-
     override fun hashCode(): Int {
         var result = id
         result = 31 * result + name.hashCode()
