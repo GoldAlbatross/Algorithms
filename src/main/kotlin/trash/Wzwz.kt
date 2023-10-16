@@ -6,15 +6,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 
 
-fun main() {
 
-    val x: Deferred<Int?> = CoroutineScope(Job()).async {
-        return@async null
-    }
-
-    println(x.onAwait)
-
-}
 
 
 
