@@ -17,4 +17,3 @@ public class WhatTheFuck {
     }
 }
 
-static class Xxx {}
