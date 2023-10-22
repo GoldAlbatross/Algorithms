@@ -2,9 +2,6 @@ package leet_code.collections.linked_list
 
 
 
-private class Example {
-
-}
 fun main() {
     val l1 = ListNode(3)
     l1.tail = ListNode(2)
