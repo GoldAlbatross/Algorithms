@@ -1,9 +1,9 @@
-package leet_code.collections
+package leet_code.collections.array
 
 
 private fun main() {
     println(
-        searchInsert(intArrayOf(1,3,5,6), 7)
+        searchInsert2(intArrayOf(1,3,5,6), 7)
     )
 }
 fun searchInsert2(nums: IntArray, target: Int): Int {

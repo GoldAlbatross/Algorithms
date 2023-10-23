@@ -1,4 +1,4 @@
-package leet_code.collections
+package leet_code.collections.array
 
 fun main() {
     println(twoSum1(intArrayOf(3,2,4), 6).contentToString())

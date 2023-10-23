@@ -1,4 +1,4 @@
-package leet_code.collections
+package leet_code.collections.sorted_array
 
 fun main() {
     println(

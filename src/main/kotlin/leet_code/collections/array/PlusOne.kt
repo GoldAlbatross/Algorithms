@@ -1,7 +1,8 @@
-package leet_code.collections
+package leet_code.collections.array
 
 private fun main() {
-   println(plusOne(
+   println(
+       plusOne(
        intArrayOf(9,9,9,7)).contentToString()
    )
 }
