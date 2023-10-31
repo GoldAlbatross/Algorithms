@@ -1,4 +1,4 @@
-package trash
+package trash.coroutines
 
 import kotlinx.coroutines.*
 
@@ -26,6 +26,3 @@ suspend fun unknownFunction() {
         cancel()
     }
 }
-
-
-
