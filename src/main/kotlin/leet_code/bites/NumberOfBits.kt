@@ -1,6 +1,5 @@
 package leet_code.bites
 
-import com.sun.jdi.IntegerType
 
 /**
  * Write a function that takes the binary representation of an unsigned integer and returns the number
