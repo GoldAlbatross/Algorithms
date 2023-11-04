@@ -2,12 +2,12 @@ package leet_code.collections.linked_list
 
 fun main() {
     val l1 = ListNode(5)
-    l1.tail = ListNode(6)
-    l1.tail!!.tail = ListNode(7)
+    l1.next = ListNode(6)
+    l1.next!!.next = ListNode(7)
 
     val l2 = ListNode(3)
-    l2.tail = ListNode(4)
-    l2.tail!!.tail = ListNode(5)
+    l2.next = ListNode(4)
+    l2.next!!.next = ListNode(5)
 
     println(
         mergeTwoLists(l1,l2).toString()
@@ -24,31 +24,31 @@ fun mergeTwoLists(list1: ListNode?, list2: ListNode?): ListNode? {
 
     while (l1 != null && l2 != null) {
         if (l1.value < l2.value) {
-            current.tail = l1
-            l1 = l1.tail
+            current.next = l1
+            l1 = l1.next
         } else {
-            current.tail = l2
-            l2 = l2.tail
+            current.next = l2
+            l2 = l2.next
         }
-        current = current.tail!!
+        current = current.next!!
     }
 
-    current.tail = l1 ?: l2
+    current.next = l1 ?: l2
 
-    return result.tail
+    return result.next
 }
 
 class ListNode(
     var value: Int
 ) {
-    var tail: ListNode? = null
+    var next: ListNode? = null
     override fun toString(): String {
         var next: ListNode? = this
         var result = next!!.value.toString()
 
         while (next != null) {
-            result += next.tail?.value.toString()
-            next = next.tail
+            result += next.next?.value.toString()
+            next = next.next
 
         }
         return result

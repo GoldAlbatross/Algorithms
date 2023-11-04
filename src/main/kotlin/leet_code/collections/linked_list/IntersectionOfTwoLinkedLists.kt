@@ -8,12 +8,12 @@ package leet_code.collections.linked_list
  */
 fun main() {
     val l1 = ListNode(4)
-    l1.tail = ListNode(2)
-    l1.tail!!.tail = ListNode(3)
+    l1.next = ListNode(2)
+    l1.next!!.next = ListNode(3)
 
     val l2 = ListNode(1)
-    l2.tail = ListNode(2)
-    l2.tail!!.tail = ListNode(3)
+    l2.next = ListNode(2)
+    l2.next!!.next = ListNode(3)
 
     println(getIntersectionNode(l1,l2))
 }
@@ -23,11 +23,11 @@ fun getIntersectionNode(headA:ListNode?, headB:ListNode?):ListNode? {
     val set = mutableSetOf<ListNode?>()
     var pointer = headA
     while (pointer != null && set.add(pointer)) {
-        pointer = pointer.tail
+        pointer = pointer.next
     }
     pointer = headB
     while (pointer != null && set.add(pointer)) {
-        pointer = pointer.tail
+        pointer = pointer.next
     }
     return pointer
 }

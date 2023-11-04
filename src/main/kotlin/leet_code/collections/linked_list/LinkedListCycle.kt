@@ -4,10 +4,10 @@ package leet_code.collections.linked_list
 
 fun main() {
     val l1 = ListNode(3)
-    l1.tail = ListNode(2)
-    l1.tail!!.tail = ListNode(0)
-    l1.tail!!.tail!!.tail = ListNode(-4)
-    l1.tail!!.tail!!.tail!!.tail = l1.tail
+    l1.next = ListNode(2)
+    l1.next!!.next = ListNode(0)
+    l1.next!!.next!!.next = ListNode(-4)
+    l1.next!!.next!!.next!!.next = l1.next
     println(hasCycle(l1))
 }
 
@@ -19,7 +19,7 @@ fun hasCycle2(head: ListNode?): Boolean {
         size++
         set.add(node.hashCode())
         println("$size, $set")
-        node = node.tail
+        node = node.next
     }
 
     return set.size == size
@@ -30,7 +30,7 @@ fun hasCycle(head: ListNode?): Boolean {
     var current = head
     while (current != null && current.value != sentinel) {
         current.value = sentinel
-        current = current.tail
+        current = current.next
     }
 
     return current != null
