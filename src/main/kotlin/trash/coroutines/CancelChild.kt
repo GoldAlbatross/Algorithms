@@ -2,12 +2,9 @@ package trash.coroutines
 
 import kotlinx.coroutines.*
 
-suspend fun main()  {
+private suspend fun main()  {
     unknownFunction()
 }
-
-
-
 
 
 suspend fun unknownFunction() {
