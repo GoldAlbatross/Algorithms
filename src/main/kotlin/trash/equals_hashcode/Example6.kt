@@ -38,13 +38,12 @@ class Contact6(
 fun main() {
 
     val contact1 = Contact6(124, "Oleg", "8-910-310-45-45")
-    val contact2 = Contact6(124, "Oleg", "8-910-310-45-45")
     val map = hashMapOf<Contact6, String>()
 
 
-    map.put(contact1, "Moscow")
+    map[contact1] = "Moscow"
 
-    contact1.phone = "8-000-000-00-00"
+    contact1.phone = "8-000-000-00-00"  // изменили ключ - значение теперь не достать
 
     println(map[contact1])
 

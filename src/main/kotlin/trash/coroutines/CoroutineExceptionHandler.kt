@@ -1,45 +1,43 @@
 package trash.coroutines
 
 import kotlinx.coroutines.*
-import kotlinx.coroutines.NonCancellable.cancel
-import kotlinx.coroutines.NonCancellable.invokeOnCompletion
-import java.io.FileNotFoundException
 
 @OptIn(InternalCoroutinesApi::class)
 fun main() = runBlocking {
 
-    val ceh = CoroutineExceptionHandler { _, throwable ->
+    val eHandler = CoroutineExceptionHandler { _, throwable ->
         println(throwable)
     }
-    val scope = CoroutineScope(Job() + Dispatchers.IO)
+    val scope = CoroutineScope(Job() + Dispatchers.IO + eHandler)
 
     scope.launch {
 
         supervisorScope {
 
-            launch {
+            launch(eHandler) {
                 delay(600)
                 println("333")
-            }.invokeOnCompletion(onCancelling = true) { println("333 is cancelling") }
+            }
 
-            launch(ceh) {
+            launch(eHandler) {// в этой точке eHandler поймает throw Exception("111")
+
                 coroutineScope {
 
                     launch {
                         delay(100)
                         throw Exception("111")
-                    }.invokeOnCompletion(onCancelling = true) { println("111 is cancelling") }
+                    }
 
                     launch {
                         delay(200)
                         println("222")
-                    }.invokeOnCompletion(onCancelling = true) { println("222 is cancelling $it") }
+                    }.invokeOnCompletion { println("222 is cancelling") }
                 }
             }
 
-            launch(ceh) {
+            launch(eHandler) {// в этой точке eHandler поймает throw Exception("444")
                 delay(400)
-                throw Exception("333")
+                throw Exception("444")
             }
 
         }
