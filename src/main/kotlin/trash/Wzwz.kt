@@ -14,42 +14,24 @@ fun main() {
     duplicateZeros(intArrayOf(0,1,2,0,3,3))
 }
 
-fun duplicateZeros(arr: IntArray): Unit {
-    val stack = Stack<Int>()
-    var i = 0
-    println("arr:   ${arr.contentToString()}\n")
-
-    while (stack.size < arr.size) {
-        if (arr[i] == 0) {
-            stack.push(0)
-        }
-        stack.push(arr[i++])
-    }
-    println("stack: $stack")
-
-    for (i in arr.lastIndex downTo 0) {
-        arr[i] = stack.pop()
-    }
-    println("arr:   ${arr.contentToString()}\n")
-
-// v
-//[10230450]
-
-}
-
-
-//[]
-//[0001]
-
-//v
-//[00230450]
-
-
-//1023
-//составить стэк и туда записать все что не 0 = 54321
 
 
 
+// []     0
+// [00]   0
+// [901]  0
+// [09]   0
+
+//   v    v
+// [186254837]
+//  012345678
+
+// наибольшее расстояние
+// наибольшая высота
+
+//8-0 * 7 || 1
+//7-1 * 8 || 3
+//
 
 //val flow1 = flowOf("A", "B", "C")
 //    .onEach { delay(400) }
