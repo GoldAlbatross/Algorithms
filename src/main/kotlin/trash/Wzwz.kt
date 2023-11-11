@@ -6,44 +6,47 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.zip
+import java.util.*
 
 //==================================================================
 
-suspend fun main() {
-val data = if ((0..1).random() == 1) "data" else "boss"
+fun main() {
+    duplicateZeros(intArrayOf(0,1,2,0,3,3))
+}
 
-    val a = buildString {                 // yes
-        append("data")
-        insert(0,"yes")
-        setLength(length - "data".length)
+fun duplicateZeros(arr: IntArray): Unit {
+    val stack = Stack<Int>()
+    var i = 0
+    println("arr:   ${arr.contentToString()}\n")
+
+    while (stack.size < arr.size) {
+        if (arr[i] == 0) {
+            stack.push(0)
+        }
+        stack.push(arr[i++])
     }
+    println("stack: $stack")
 
-    val b = "data".substring(1, 4)                      // ata
+    for (i in arr.lastIndex downTo 0) {
+        arr[i] = stack.pop()
+    }
+    println("arr:   ${arr.contentToString()}\n")
 
-    val c = "data".removeRange(1, 4)                      // d
+// v
+//[10230450]
 
-    val d = ""
-
-
-
-
-    println(a)
-    println(b)
-    println(c)
-    println(d)
-    println(data)
-
-} // (1 sec)  A_1  (1 sec)  B_2  (1 sec)  C_3
+}
 
 
+//[]
+//[0001]
 
-//fun main(args: Array<String>) {
-//    val numbers = arrayOf(10, 15, 25, 30)
-//    val objects: Array<Any> = numbers //1
-//    println(objects[2]) //2
-//    objects[2] = "meow!" //3
-//}
+//v
+//[00230450]
 
+
+//1023
+//составить стэк и туда записать все что не 0 = 54321
 
 
 
