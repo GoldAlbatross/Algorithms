@@ -35,7 +35,7 @@ fun main() = runBlocking {
                 }
             }
 
-            launch(eHandler) {// в этой точке eHandler поймает throw Exception("444")
+            launch(eHandler, start = CoroutineStart.ATOMIC) {// в этой точке eHandler поймает throw Exception("444")
                 delay(400)
                 throw Exception("444")
             }
