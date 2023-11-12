@@ -11,9 +11,36 @@ import java.util.*
 //==================================================================
 
 fun main() {
-    duplicateZeros(intArrayOf(0,1,2,0,3,3))
+    val test = KthLargest(3, intArrayOf(4,5,8,2))
+    println(test.add(3))
+    println(test.add(5))
+    println(test.add(10))
+    println(test.add(9))
 }
+class KthLargest(val k: Int, val nums: IntArray) {
 
+    fun add(`val`: Int): Int {
+
+        val mNums = nums + `val`
+        val list = mutableListOf(Int.MIN_VALUE)
+
+        for (num in mNums) {
+            if (num >= list[list.lastIndex] && num != list[0]) {
+                list.add(num)
+            }
+        }
+        println(list)
+
+
+
+        for (i in nums.lastIndex downTo 0) {
+            nums[i] = list[i]
+        }
+
+        return list[list.size - 3]
+    }
+
+}
 
 
 
