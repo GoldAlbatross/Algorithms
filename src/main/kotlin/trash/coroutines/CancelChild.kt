@@ -9,12 +9,13 @@ private suspend fun main()  {
 
 suspend fun unknownFunction() {
     coroutineScope {
-        launch(Job()) {
+        val job = launch(Job()) {
             println("three")
             cancel()
             delay(1000)
             println("forth")
         }
+        job.ensureActive()
         cancel()
         delay(2000)
         println("cancel")

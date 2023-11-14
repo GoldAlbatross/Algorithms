@@ -1,34 +1,31 @@
 package trash
 
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import java.util.Deque
+import java.util.Queue
+import java.util.Stack
+import java.util.Vector
+import java.util.concurrent.atomic.AtomicInteger
+import kotlin.concurrent.thread
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.zip
-import java.util.*
+suspend fun main() {
+    println("Before")
 
-//==================================================================
+    suspendCoroutine<Unit> { continuation ->
+        thread {
+            println("Suspended")
+            Thread.sleep(1000)
+            continuation.resume(Unit)
+            println("Resumed")
+        }
+    }
 
-
-
-
-
-// []     0
-// [00]   0
-// [901]  0
-// [09]   0
-
-//   v    v
-// [186254837]
-//  012345678
-
-// наибольшее расстояние
-// наибольшая высота
-
-//8-0 * 7 || 1
-//7-1 * 8 || 3
-//
+    println("After")
+}
 
 //val flow1 = flowOf("A", "B", "C")
 //    .onEach { delay(400) }
@@ -37,6 +34,8 @@ import java.util.*
 //
 //flow1.zip(flow2) { f1, f2 -> "${f1}_${f2}" }
 //.collect { println(it) }
+
+
 
 
 
