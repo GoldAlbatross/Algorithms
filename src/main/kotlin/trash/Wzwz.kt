@@ -27,6 +27,21 @@ suspend fun main() {
     println("After")
 }
 
+fun sumOddLengthSubarrays(arr: IntArray): Int {
+    var count = 0
+    var end = 0
+    val list = arr.toList()
+
+    while(end == arr.lastIndex) {
+        end += 2
+        for (i in 0..arr.lastIndex) {
+            count += list.subList(i,end+i).sum()
+        }
+    }
+
+    return count
+}
+
 //val flow1 = flowOf("A", "B", "C")
 //    .onEach { delay(400) }
 //val flow2 = flowOf(1, 2, 3, 4)

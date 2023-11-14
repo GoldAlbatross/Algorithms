@@ -27,25 +27,19 @@ package leet_code.collections.array
  * Explanation: No pairs can be formed, and there is 1 number leftover in nums.
  * */
 fun main() {
-    println(numberOfPairs(intArrayOf(1,2,3,5)))
+    println(numberOfPairs(intArrayOf(1,2,3,3,5,2,2)))
 }
 
 fun numberOfPairs(nums: IntArray): IntArray {
     var count = 0
+    val hash = hashSetOf<Int>()
 
-    for (i in 0 until nums.lastIndex) {
-        val num = nums[i]
-        if (num != -1) {
-            for (j in i+1..nums.lastIndex) {
-                if (num == nums[j]) {
-                    count++
-                    nums[i] = -1
-                    nums[j] = -1
-                    break
-                }
-            }
+    for (num in nums) {
+        if (!hash.add(num)) {
+            hash.remove(num)
+            count++
         }
     }
 
-    return intArrayOf(count, nums.size - count*2)
+    return intArrayOf(count, hash.size)
 }
