@@ -37,3 +37,4 @@ fun specialArray(nums: IntArray): Int {
 
     return -1
 }
+
