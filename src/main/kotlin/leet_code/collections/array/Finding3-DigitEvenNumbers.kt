@@ -1,4 +1,4 @@
-package trash
+package leet_code.collections.array
 /**
  * You are given an integer array digits, where each element is a digit. The array may contain duplicates.
  *
@@ -52,7 +52,7 @@ fun findEvenNumbers2(digits: IntArray): IntArray {
 
         num.toString().forEach {
             val n = it.digitToInt()
-            if (map.containsKey(n)) {
+            if (n in map) {
                 if (map[n]!! >= 1){
                     map[n] = map[n]!! - 1
                 }
