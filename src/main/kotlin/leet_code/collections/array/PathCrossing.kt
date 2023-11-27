@@ -1,6 +1,4 @@
-package trash
-
-import java.util.*
+package leet_code.collections.array
 
 
 fun main()  {
