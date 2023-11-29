@@ -39,9 +39,9 @@ private fun minMaxGame(nums: IntArray): Int {
         curNums = IntArray(curNums.size/2)
         for (i in 0..curNums.lastIndex) {
             if (i % 2 == 0) {
-                curNums[i] = Math.min(prevNums[2 * i], prevNums[2 * i + 1])
+                curNums[i] = prevNums[2 * i].coerceAtMost(prevNums[2 * i + 1])
             } else {
-                curNums[i] = Math.max(prevNums[2 * i], prevNums[2 * i + 1])
+                curNums[i] = prevNums[2 * i].coerceAtLeast(prevNums[2 * i + 1])
             }
         }
         prevNums = curNums
