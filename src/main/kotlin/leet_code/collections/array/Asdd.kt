@@ -2,6 +2,8 @@ package leet_code.collections.array
 
 fun main() {
     println(trimMean(intArrayOf(6,2,7,5,1,2,0,3,10,2,5,0,5,5,0,8,7,6,8,0)))
+
+    
 }
 
 fun trimMean(arr: IntArray): Double {
